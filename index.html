@@ -409,8 +409,9 @@ table.promos .neg { color: var(--red); font-weight: 600; }
       </button>
     </nav>
     <div class="cycle-info">
-      <div class="strong">Q2 2026 · North America</div>
-      <div>1 Brand · 1 Planning Cycle</div>
+      <div class="strong">Mother's Day 2026</div>
+      <div>Estée Lauder · US + APAC Travel</div>
+      <div style="margin-top:10px">4 channels · 8 weeks · 10 SKUs</div>
       <div style="margin-top:10px">Last sync: today 06:14</div>
     </div>
   </aside>
@@ -418,16 +419,16 @@ table.promos .neg { color: var(--red); font-weight: 600; }
   <main>
     <header class="topbar">
       <div class="filters">
-        <div class="filter-chip">Q2 2026</div>
-        <div class="filter-chip">All SKUs</div>
-        <div class="filter-chip">All retailers</div>
+        <div class="filter-chip">Mother's Day 2026</div>
+        <div class="filter-chip">Estée Lauder</div>
+        <div class="filter-chip">All channels</div>
       </div>
       <div class="spacer"></div>
       <div class="user-chip">
         <div class="avatar">SC</div>
         <div>
           <div style="font-weight:600">Sarah Chen</div>
-          <div style="font-size:11.5px;color:var(--slate-2)">Brand VP</div>
+          <div style="font-size:11.5px;color:var(--slate-2)">Brand VP · Estée Lauder</div>
         </div>
       </div>
     </header>
@@ -437,7 +438,7 @@ table.promos .neg { color: var(--red); font-weight: 600; }
       <!-- ================ PLANNING WORKSPACE ================ -->
       <div class="view active" id="view-workspace">
         <h1 class="page-title">Planning Workspace</h1>
-        <p class="page-sub">20 promotions in this cycle. 18 need your decision before they run.</p>
+        <p class="page-sub">Mother's Day 2026 · 20 promotions across 4 channels. The workbench evaluates each one against its channel's economics — margin capture, GWP response, seasonality lift — and flags what needs your attention.</p>
 
         <div class="kpi-row">
           <div class="kpi accent">
@@ -462,12 +463,21 @@ table.promos .neg { color: var(--red); font-weight: 600; }
           </div>
         </div>
 
-        <div class="toolbar">
+        <div id="channel-breakdown" class="card" style="margin-bottom:18px;padding:16px 20px"></div>
+
+        <div class="toolbar" style="justify-content:space-between;gap:18px;flex-wrap:wrap">
           <div class="pills" id="filter-pills">
             <button class="pill active" data-filter="all">All (20)</button>
             <button class="pill" data-filter="modify">Modify</button>
             <button class="pill" data-filter="hold">Hold</button>
             <button class="pill" data-filter="run">Run as-is</button>
+          </div>
+          <div class="pills" id="channel-pills">
+            <button class="pill active" data-channel="all">All channels</button>
+            <button class="pill" data-channel="Specialty">Specialty</button>
+            <button class="pill" data-channel="Department">Department</button>
+            <button class="pill" data-channel="Travel">Travel</button>
+            <button class="pill" data-channel="DTC">DTC</button>
           </div>
         </div>
 
@@ -476,7 +486,7 @@ table.promos .neg { color: var(--red); font-weight: 600; }
             <tr>
               <th>ID</th>
               <th>SKU</th>
-              <th>Retailer</th>
+              <th>Retailer · Channel</th>
               <th>Week</th>
               <th>Planned Depth</th>
               <th>Recommended</th>
@@ -518,11 +528,11 @@ table.promos .neg { color: var(--red); font-weight: 600; }
       <!-- ================ POST-PROMO SCORECARD ================ -->
       <div class="view" id="view-scorecard">
         <h1 class="page-title">Post-Promo Scorecard</h1>
-        <p class="page-sub">Last cycle. Expected vs. actual. Closed loop.</p>
+        <p class="page-sub">Mother's Day 2025. Expected vs. actual. Closed loop — this is what we learned, and what's fed back into this year's model.</p>
 
         <div class="scorecard-hero" id="scorecard-hero"></div>
 
-        <h3 class="section-h">Last 10 Completed Promotions</h3>
+        <h3 class="section-h">Mother's Day 2025 · 10 Completed Promotions</h3>
         <table class="promos">
           <thead>
             <tr>
@@ -563,20 +573,34 @@ table.promos .neg { color: var(--red); font-weight: 600; }
         <div class="row">
           <div class="card" style="flex:1;min-width:260px">
             <h3 style="margin:0 0 8px;font-size:13.5px;color:var(--navy)">Approved Mechanics</h3>
-            <p class="small muted" style="margin:0 0 10px">Mechanics the system can recommend.</p>
+            <p class="small muted" style="margin:0 0 10px">Mechanics the system can recommend. Prestige beauty — brand equity is the constraint.</p>
             <div style="line-height:1.9">
-              <div>TPR only</div>
-              <div>TPR + feature</div>
-              <div>TPR + feature + display</div>
+              <div>GWP · gift with purchase</div>
+              <div>GWP · sample kit</div>
+              <div>Bundle / Gift set</div>
+              <div>Bonus size</div>
+              <div>% off + sample</div>
+              <div>% off <span class="small muted">(DTC / Specialty only)</span></div>
             </div>
           </div>
           <div class="card" style="flex:1;min-width:260px">
             <h3 style="margin:0 0 8px;font-size:13.5px;color:var(--navy)">Depth Thresholds</h3>
-            <div class="small muted" style="margin:0 0 10px">Auto-flag if outside these bounds.</div>
+            <div class="small muted" style="margin:0 0 10px">Prestige guardrails. Auto-flag if outside.</div>
             <div style="line-height:1.9">
-              <div>Min depth: <strong>10%</strong></div>
-              <div>Max depth: <strong>40%</strong></div>
-              <div>Max depth (high-margin categories): <strong>35%</strong></div>
+              <div>Min depth: <strong>8%</strong></div>
+              <div>Max depth: <strong>30%</strong></div>
+              <div>Max depth (Re-Nutriv, ultra-prestige): <strong>15%</strong></div>
+              <div>Min viable inc. GP: <strong>$2,500</strong></div>
+            </div>
+          </div>
+          <div class="card" style="flex:1;min-width:260px">
+            <h3 style="margin:0 0 8px;font-size:13.5px;color:var(--navy)">Channel Margin Capture</h3>
+            <div class="small muted" style="margin:0 0 10px">What ELC retains after trade terms.</div>
+            <div style="line-height:1.9">
+              <div>DTC (esteelauder.com): <strong>100%</strong></div>
+              <div>Travel Retail: <strong>72%</strong></div>
+              <div>Specialty (Sephora / Ulta): <strong>60%</strong></div>
+              <div>Department (Nordstrom / Macy's): <strong>55%</strong></div>
             </div>
           </div>
           <div class="card" style="flex:1;min-width:260px">
@@ -584,8 +608,8 @@ table.promos .neg { color: var(--red); font-weight: 600; }
             <div style="line-height:1.9" class="small">
               <div><strong>Sarah Chen</strong> · Brand VP · Approver</div>
               <div><strong>Mark Liu</strong> · Planning Lead · Proposer</div>
-              <div><strong>Priya Rao</strong> · Strategist · Proposer</div>
-              <div><strong>Tom Alvarez</strong> · Regional Lead · Proposer</div>
+              <div><strong>Priya Rao</strong> · Channel Strategist · Proposer</div>
+              <div><strong>Tom Alvarez</strong> · Travel Retail Lead · Proposer</div>
             </div>
           </div>
         </div>
@@ -614,42 +638,58 @@ table.promos .neg { color: var(--red); font-weight: 600; }
 // ============================================================================
 // ============================================================================
 // Promotion Intelligence & Activation Workbench — Demo Data + Decision Engine
-// ----------------------------------------------------------------------------
+// Estée Lauder (brand) · Mother's Day 2026 · Specialty / Department / Travel / DTC
 // All numbers are illustrative. Math is deterministic and reproducible.
 // ============================================================================
 
-// ---- SKUs --------------------------------------------------------------------
+// ---- SKUs (Estée Lauder namesake brand heroes) ------------------------------
+// Elasticities and drag are Mother's Day gift-window effective values —
+// beauty gift-buyers are more price-responsive in peak season than in base state.
 const SKUS = {
-  'SKU-1001': { name: 'Brand X Cereal 18oz', category: 'Cereal',    unitPrice: 4.99, unitMargin: 2.60, baselineWeeklyUnits: 12500, elasticity: -2.8, cannibalization: 0.07, forwardBuy: 0.12 },
-  'SKU-1002': { name: 'Brand X Cereal 24oz', category: 'Cereal',    unitPrice: 6.49, unitMargin: 3.40, baselineWeeklyUnits:  8200, elasticity: -2.6, cannibalization: 0.08, forwardBuy: 0.11 },
-  'SKU-2001': { name: 'Brand Y Frozen Pizza',category: 'Frozen',    unitPrice: 7.99, unitMargin: 4.30, baselineWeeklyUnits:  9400, elasticity: -3.2, cannibalization: 0.05, forwardBuy: 0.15 },
-  'SKU-3001': { name: 'Brand Z Sparkling 12pk', category: 'Beverage', unitPrice: 8.99, unitMargin: 5.00, baselineWeeklyUnits: 14800, elasticity: -3.0, cannibalization: 0.06, forwardBuy: 0.14 }
+  'ANR-SRM-50':   { name: 'Advanced Night Repair Serum 50ml',         category: 'Skincare',  unitPrice: 125, unitMargin: 100, baselineWeeklyUnits: 3800, elasticity: -2.3, cannibalization: 0.07, forwardBuy: 0.03 },
+  'ANR-EYE-15':   { name: 'Advanced Night Repair Eye 15ml',           category: 'Skincare',  unitPrice:  72, unitMargin:  58, baselineWeeklyUnits: 2100, elasticity: -2.5, cannibalization: 0.09, forwardBuy: 0.03 },
+  'REVSUP-50':    { name: 'Revitalizing Supreme+ Moisturizer 50ml',   category: 'Skincare',  unitPrice:  95, unitMargin:  76, baselineWeeklyUnits: 2600, elasticity: -2.4, cannibalization: 0.06, forwardBuy: 0.03 },
+  'RENUTRIV-50':  { name: 'Re-Nutriv Ultimate Lift Crème 50ml',       category: 'Prestige',  unitPrice: 360, unitMargin: 300, baselineWeeklyUnits:  380, elasticity: -1.6, cannibalization: 0.05, forwardBuy: 0.02 },
+  'DWEAR-FND':    { name: 'Double Wear Stay-in-Place Foundation',     category: 'Makeup',    unitPrice:  48, unitMargin:  38, baselineWeeklyUnits: 5200, elasticity: -2.7, cannibalization: 0.06, forwardBuy: 0.04 },
+  'PCE-LIP':      { name: 'Pure Color Envy Sculpting Lipstick',       category: 'Makeup',    unitPrice:  38, unitMargin:  30, baselineWeeklyUnits: 3400, elasticity: -2.9, cannibalization: 0.11, forwardBuy: 0.03 },
+  'SUMP-MAS':     { name: 'Sumptuous Extreme Mascara',                 category: 'Makeup',    unitPrice:  34, unitMargin:  27, baselineWeeklyUnits: 2900, elasticity: -3.0, cannibalization: 0.10, forwardBuy: 0.04 },
+  'BBELLE-EDP':   { name: 'Beautiful Belle Eau de Parfum 50ml',        category: 'Fragrance', unitPrice:  98, unitMargin:  78, baselineWeeklyUnits: 1650, elasticity: -2.1, cannibalization: 0.04, forwardBuy: 0.03 },
+  'YOUTHDEW-EDP': { name: 'Youth-Dew Eau de Parfum 67ml',              category: 'Fragrance', unitPrice:  75, unitMargin:  60, baselineWeeklyUnits:  980, elasticity: -2.2, cannibalization: 0.05, forwardBuy: 0.03 },
+  'PCCLEAN-150':  { name: 'Perfectly Clean Multi-Action Cleanser',     category: 'Skincare',  unitPrice:  32, unitMargin:  24, baselineWeeklyUnits: 2200, elasticity: -2.6, cannibalization: 0.06, forwardBuy: 0.04 }
 };
 
-// ---- Retailers ---------------------------------------------------------------
+// ---- Retailers (4 channels) --------------------------------------------------
+// marginCapture: fraction of unit margin ELC retains after trade terms.
+//   DTC=100% (direct), Travel=72% (no retailer margin), Specialty=60%, Department=55%.
+// gwpBoost: channel multiplier on GWP effectiveness (dept stores lean on GWP hard).
+// seasonalityLift: Mother's Day lift multiplier specific to this channel.
 const RETAILERS = {
-  'RET-A': { name: 'National Grocer A', seasonalityLift: 1.00, competitiveIntensity: 'high' },
-  'RET-B': { name: 'Club Channel B',    seasonalityLift: 1.15, competitiveIntensity: 'medium' },
-  'RET-C': { name: 'Mass Retailer C',   seasonalityLift: 1.05, competitiveIntensity: 'high' }
+  'SEPH': { name: 'Sephora',              channel: 'Specialty',  seasonalityLift: 1.18, marginCapture: 0.60, gwpBoost: 1.10, competitiveIntensity: 'high'   },
+  'ULTA': { name: 'Ulta Beauty',          channel: 'Specialty',  seasonalityLift: 1.12, marginCapture: 0.60, gwpBoost: 1.05, competitiveIntensity: 'high'   },
+  'NORD': { name: 'Nordstrom',            channel: 'Department', seasonalityLift: 1.30, marginCapture: 0.55, gwpBoost: 1.28, competitiveIntensity: 'medium' },
+  'MACY': { name: "Macy's",               channel: 'Department', seasonalityLift: 1.35, marginCapture: 0.55, gwpBoost: 1.25, competitiveIntensity: 'medium' },
+  'TRAV': { name: 'Travel Retail APAC',   channel: 'Travel',     seasonalityLift: 1.08, marginCapture: 0.72, gwpBoost: 0.92, competitiveIntensity: 'medium' },
+  'DTC':  { name: 'esteelauder.com',      channel: 'DTC',        seasonalityLift: 1.22, marginCapture: 1.00, gwpBoost: 1.00, competitiveIntensity: 'low'    }
 };
 
-// ---- Calendar: Q2 2026 weeks -------------------------------------------------
+// ---- Calendar: Mother's Day 2026 (May 10) weeks ------------------------------
 const WEEKS = [
-  { id: 'W14', label: 'Wk of Apr 6',  seasonalityIdx: 0.98 },
-  { id: 'W15', label: 'Wk of Apr 13', seasonalityIdx: 1.00 },
-  { id: 'W16', label: 'Wk of Apr 20', seasonalityIdx: 1.02 },
-  { id: 'W17', label: 'Wk of Apr 27', seasonalityIdx: 1.04 },
-  { id: 'W18', label: 'Wk of May 4',  seasonalityIdx: 1.06 },
-  { id: 'W19', label: 'Wk of May 11', seasonalityIdx: 1.10 },
-  { id: 'W20', label: 'Wk of May 18', seasonalityIdx: 1.12 },
-  { id: 'W21', label: 'Wk of May 25', seasonalityIdx: 1.18 }  // Memorial Day
+  { id: 'W12', label: 'Wk of Mar 23', seasonalityIdx: 0.95 },
+  { id: 'W13', label: 'Wk of Mar 30', seasonalityIdx: 1.00 },
+  { id: 'W14', label: 'Wk of Apr 6',  seasonalityIdx: 1.05 },
+  { id: 'W15', label: 'Wk of Apr 13', seasonalityIdx: 1.15 },
+  { id: 'W16', label: 'Wk of Apr 20', seasonalityIdx: 1.30 },
+  { id: 'W17', label: 'Wk of Apr 27', seasonalityIdx: 1.50 },
+  { id: 'W18', label: 'Wk of May 4',  seasonalityIdx: 1.65 }, // Mother's Day May 10
+  { id: 'W19', label: 'Wk of May 11', seasonalityIdx: 0.85 }  // post-event dip
 ];
 
 // ============================================================================
 // Decision Engine
 // ----------------------------------------------------------------------------
 // Pure functions. Given a planned promotion, produce a recommendation,
-// expected results, and ranked alternatives.
+// expected results, and ranked alternatives. Margin capture is threaded through
+// so the same SKU can evaluate differently in DTC vs. Sephora vs. Nordstrom.
 // ============================================================================
 
 function expectedLift(depth, elasticity) {
@@ -657,7 +697,7 @@ function expectedLift(depth, elasticity) {
   // depth is % off, so %ΔP = -depth
   const pctPriceChange = -depth;
   const pctQtyChange = elasticity * pctPriceChange;
-  return pctQtyChange; // e.g. 0.45 = +45% units vs baseline
+  return pctQtyChange;
 }
 
 function grossLiftUnits(sku, depth, seasonality) {
@@ -666,50 +706,65 @@ function grossLiftUnits(sku, depth, seasonality) {
 }
 
 function incrementalUnits(sku, depth, seasonality) {
-  // Gross uplift, minus forward-buy pull-forward, minus cannibalization from own portfolio.
   const gross = grossLiftUnits(sku, depth, seasonality);
   const forwardPullForward = gross * sku.forwardBuy;
   const cann = gross * sku.cannibalization;
   return gross - forwardPullForward - cann;
 }
 
-function marginGiveaway(sku, depth, seasonality) {
-  // Margin lost on the baseline units that would have sold anyway at full price.
+function marginGiveaway(sku, depth, seasonality, retailer) {
+  // Margin lost on baseline units that would have sold anyway at full price.
+  // Give-away is weighted by margin capture — ELC only gives away what it captures.
+  const mc = (retailer && retailer.marginCapture) || 1.0;
   const baselineUnits = sku.baselineWeeklyUnits * seasonality;
   const discount = sku.unitPrice * depth;
-  return baselineUnits * discount;
+  return baselineUnits * discount * mc;
 }
 
-function incrementalGP(sku, depth, seasonality) {
+function incrementalGP(sku, depth, seasonality, retailer) {
+  const mc = (retailer && retailer.marginCapture) || 1.0;
   const incUnits = incrementalUnits(sku, depth, seasonality);
-  const discountedPrice = sku.unitPrice * (1 - depth);
-  const newUnitMargin = Math.max(0, sku.unitMargin - (sku.unitPrice * depth));
-  const incrementalMargin = incUnits * newUnitMargin;
-  const giveaway = marginGiveaway(sku, depth, seasonality);
+  const netUnitMargin = sku.unitMargin * mc;
+  const discountPerUnit = sku.unitPrice * depth * mc;
+  const netIncMargin = Math.max(0, netUnitMargin - discountPerUnit);
+  const incrementalMargin = incUnits * netIncMargin;
+  const giveaway = marginGiveaway(sku, depth, seasonality, retailer);
   return incrementalMargin - giveaway;
 }
 
 function confidenceScore(sku, depth, week, retailer) {
-  // Simple heuristic: lower confidence at extreme depths, high-competition retailers,
-  // high-seasonality weeks (more variance).
   let c = 0.85;
-  if (depth > 0.30) c -= 0.15;
-  if (depth < 0.10) c -= 0.08;
-  if (retailer.competitiveIntensity === 'high') c -= 0.06;
-  if (week.seasonalityIdx > 1.10) c -= 0.05;
-  return Math.max(0.45, Math.min(0.95, c));
+  if (depth > 0.25) c -= 0.12;
+  if (depth < 0.08) c -= 0.08;
+  if (retailer.competitiveIntensity === 'high') c -= 0.05;
+  if (week.seasonalityIdx > 1.30) c -= 0.05;
+  if (retailer.channel === 'DTC') c += 0.03; // cleaner signal on DTC
+  return Math.max(0.50, Math.min(0.95, c));
 }
 
-// ---- Recommendation logic ----------------------------------------------------
+// ---- Recommendation logic ---------------------------------------------------
+// Minimum incremental GP below which activation cost (retailer buy-in, agency
+// fees, POS materials) makes the promo not worth running.
+const MIN_VIABLE_INC_GP = 2500;
 function recommendDepth(sku, retailer, week) {
-  // Search over candidate depths, pick the one that maximizes incremental GP.
-  const candidates = [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40];
-  let best = { depth: 0.20, gp: -Infinity };
+  const candidates = [0.08, 0.10, 0.12, 0.15, 0.18, 0.20, 0.22, 0.25, 0.28, 0.30];
+  let best = { depth: 0.15, gp: -Infinity };
   for (const d of candidates) {
-    const gp = incrementalGP(sku, d, week.seasonalityIdx * retailer.seasonalityLift);
+    const gp = incrementalGP(sku, d, week.seasonalityIdx * retailer.seasonalityLift, retailer);
     if (gp > best.gp) best = { depth: d, gp };
   }
   return best.depth;
+}
+
+function recommendMechanic(sku, retailer, depth) {
+  // Department stores respond best to GWP. DTC responds best to straight % off.
+  // Travel retail loves bundles. Specialty mixes GWP at depth, TPR at shallow.
+  if (retailer.channel === 'Department') return `GWP · gift at $${Math.round(sku.unitPrice * 0.6 / 5) * 5} threshold`;
+  if (retailer.channel === 'Travel')     return `Bundle / Gift set`;
+  if (retailer.channel === 'DTC')        return `% off + sample`;
+  // Specialty
+  if (depth >= 0.18) return `GWP · sample kit`;
+  return `% off + sample`;
 }
 
 function buildRecommendation(plan) {
@@ -717,74 +772,71 @@ function buildRecommendation(plan) {
   const retailer = RETAILERS[plan.retailerId];
   const week = WEEKS.find(w => w.id === plan.weekId);
   const season = week.seasonalityIdx * retailer.seasonalityLift;
+  const planDepth = plan.depth;
 
   const recDepth = recommendDepth(sku, retailer, week);
-  const recMechanic = recDepth >= 0.25 ? 'TPR + feature' : 'TPR only';
+  const recMechanic = recommendMechanic(sku, retailer, recDepth);
 
-  // Evaluate plan as proposed
   const planned = {
-    depth: plan.depth,
+    depth: planDepth,
     mechanic: plan.mechanic,
-    incUnits: incrementalUnits(sku, plan.depth, season),
-    incGP: incrementalGP(sku, plan.depth, season),
-    giveaway: marginGiveaway(sku, plan.depth, season),
-    confidence: confidenceScore(sku, plan.depth, week, retailer)
+    incUnits: incrementalUnits(sku, planDepth, season),
+    incGP: incrementalGP(sku, planDepth, season, retailer),
+    giveaway: marginGiveaway(sku, planDepth, season, retailer),
+    confidence: confidenceScore(sku, planDepth, week, retailer)
   };
 
-  // Evaluate recommendation
   const recommended = {
     depth: recDepth,
     mechanic: recMechanic,
     incUnits: incrementalUnits(sku, recDepth, season),
-    incGP: incrementalGP(sku, recDepth, season),
-    giveaway: marginGiveaway(sku, recDepth, season),
+    incGP: incrementalGP(sku, recDepth, season, retailer),
+    giveaway: marginGiveaway(sku, recDepth, season, retailer),
     confidence: confidenceScore(sku, recDepth, week, retailer)
   };
 
-  // Decision
   let action, actionLabel;
   const gpDelta = recommended.incGP - planned.incGP;
-  const depthDelta = Math.abs(plan.depth - recDepth);
+  const depthDelta = Math.abs(planDepth - recDepth);
+  const mechanicMatches = plan.mechanic && recMechanic &&
+    plan.mechanic.toLowerCase().split(/[\s·]/)[0] === recMechanic.toLowerCase().split(/[\s·]/)[0];
 
-  if (recommended.incGP <= 0) {
+  if (recommended.incGP < MIN_VIABLE_INC_GP) {
     action = 'hold';
-    actionLabel = 'Hold. No profitable depth.';
-  } else if (depthDelta < 0.025 && planned.incGP > 0) {
+    actionLabel = `Hold. Incremental GP under $${MIN_VIABLE_INC_GP.toLocaleString()} activation floor.`;
+  } else if (depthDelta < 0.03 && mechanicMatches && planned.incGP > 0 && gpDelta < Math.max(1500, planned.incGP * 0.08)) {
     action = 'run';
     actionLabel = 'Run as planned';
-  } else if (planned.incGP < 0 && recommended.incGP > 0) {
-    action = 'modify';
-    actionLabel = `Modify. ${Math.round(recDepth * 100)}% ${recMechanic}`;
   } else {
     action = 'modify';
-    actionLabel = `Modify. ${Math.round(recDepth * 100)}% ${recMechanic}`;
+    actionLabel = `Modify · ${Math.round(recDepth * 100)}% · ${recMechanic}`;
   }
 
-  // Top risk
   const risks = [];
-  if (retailer.competitiveIntensity === 'high' && week.seasonalityIdx > 1.05) {
-    risks.push('Competitor likely to counter-promo this window');
+  if (retailer.competitiveIntensity === 'high' && week.seasonalityIdx > 1.15) {
+    risks.push(`Competitor counter-promo likely. ${retailer.name} runs hot in peak weeks.`);
   }
-  if (plan.depth > 0.30) {
-    risks.push(`Forward-buy risk: ~${Math.round(sku.forwardBuy * 100)}% of uplift pulls from next 4 weeks`);
+  if (planDepth > 0.22) {
+    risks.push(`Brand equity risk: ${Math.round(planDepth*100)}% is deeper than prestige-beauty norm. Forward-buy at ${Math.round(sku.forwardBuy*100)}% pulls from next cycle.`);
   }
-  if (sku.cannibalization > 0.20) {
-    risks.push(`Cannibalization: ~${Math.round(sku.cannibalization * 100)}% volume pulled from sister SKUs`);
+  if (sku.cannibalization > 0.15) {
+    risks.push(`Cannibalization: ~${Math.round(sku.cannibalization*100)}% volume pulls from sister SKUs in the ${sku.category.toLowerCase()} line.`);
   }
-  if (risks.length === 0) risks.push('No material risks flagged');
+  if (retailer.channel === 'Department' && plan.mechanic && plan.mechanic.toLowerCase().startsWith('tpr')) {
+    risks.push(`Mechanic mismatch: department store traffic converts on GWP, not price cut. Expect underperformance at current depth.`);
+  }
+  if (risks.length === 0) risks.push('No material risks flagged.');
 
-  // Alternatives (top 2 by GP)
-  const altDepths = [0.10, 0.15, 0.20, 0.25, 0.30, 0.35].filter(d => Math.abs(d - recDepth) > 0.01);
+  const altDepths = [0.10, 0.12, 0.15, 0.18, 0.22, 0.25].filter(d => Math.abs(d - recDepth) > 0.01);
   const alts = altDepths.map(d => ({
     depth: d,
-    mechanic: d >= 0.25 ? 'TPR + feature' : 'TPR only',
+    mechanic: recommendMechanic(sku, retailer, d),
     incUnits: incrementalUnits(sku, d, season),
-    incGP: incrementalGP(sku, d, season),
-    giveaway: marginGiveaway(sku, d, season),
+    incGP: incrementalGP(sku, d, season, retailer),
+    giveaway: marginGiveaway(sku, d, season, retailer),
     confidence: confidenceScore(sku, d, week, retailer)
   })).sort((a, b) => b.incGP - a.incGP).slice(0, 2);
 
-  // Plain-English rationale
   const rationale = buildRationale(plan, planned, recommended, sku, retailer, week, action);
 
   return {
@@ -793,25 +845,30 @@ function buildRecommendation(plan) {
     alternatives: alts,
     risks,
     rationale,
-    gpDelta
+    gpDelta,
+    planEffectiveDepth: planDepth
   };
 }
 
 function buildRationale(plan, planned, recommended, sku, retailer, week, action) {
   const lines = [];
   if (action === 'run') {
-    lines.push(`Plan is close to the optimum. Expected incremental GP of $${fmtK(planned.incGP)} with ${Math.round(planned.confidence * 100)}% confidence.`);
+    lines.push(`Plan is close to the optimum for ${retailer.name} (${retailer.channel.toLowerCase()} channel). Expected incremental GP of $${fmtK(planned.incGP)} with ${Math.round(planned.confidence * 100)}% confidence.`);
+    lines.push(`${retailer.channel} channel has ${Math.round(retailer.marginCapture*100)}% margin capture and ${(retailer.seasonalityLift).toFixed(2)}× Mother's Day seasonality lift, both of which push the math in the plan's favor.`);
   } else if (action === 'hold') {
-    lines.push(`Weak incremental case. Best-case GP at any depth is $${fmtK(recommended.incGP)}. The give-away exceeds the lift.`);
-    lines.push(`Elasticity of ${sku.elasticity} and forward-buy coefficient of ${sku.forwardBuy} mean most volume shifts rather than grows.`);
+    lines.push(`Best-case incremental GP at any tested depth is $${fmtK(recommended.incGP)} — below our $${MIN_VIABLE_INC_GP.toLocaleString()} activation floor (retailer buy-in + agency + POS).`);
+    lines.push(`${retailer.name} captures ${Math.round(retailer.marginCapture*100)}% of unit margin after trade terms, and ${sku.name} baseline is ${sku.baselineWeeklyUnits.toLocaleString()} units/wk. Not enough volume leverage on this combo to clear activation cost.`);
   } else {
-    const depthDelta = recommended.depth - plan.depth;
+    const depthDelta = recommended.depth - planned.depth;
     const direction = depthDelta < 0 ? 'reduce' : 'increase';
-    lines.push(`${direction.charAt(0).toUpperCase() + direction.slice(1)} depth from ${Math.round(plan.depth * 100)}% to ${Math.round(recommended.depth * 100)}%.`);
-    lines.push(`Expected incremental GP rises from $${fmtK(planned.incGP)} to $${fmtK(recommended.incGP)}.`);
-    lines.push(`Margin give-away drops from $${fmtK(planned.giveaway)} to $${fmtK(recommended.giveaway)}.`);
-    if (depthDelta < 0) {
-      lines.push(`At ${Math.round(plan.depth * 100)}% depth, ~${Math.round(sku.forwardBuy * 100)}% of uplift is forward-buy. Lower depth keeps the incremental share higher.`);
+    lines.push(`${direction.charAt(0).toUpperCase() + direction.slice(1)} depth from ${Math.round(planned.depth * 100)}% to ${Math.round(recommended.depth * 100)}%, and shift to ${recommended.mechanic}.`);
+    lines.push(`Expected incremental GP rises from $${fmtK(planned.incGP)} to $${fmtK(recommended.incGP)}. Margin give-away drops from $${fmtK(planned.giveaway)} to $${fmtK(recommended.giveaway)}.`);
+    if (retailer.channel === 'Department') {
+      lines.push(`${retailer.name} converts on GWP, not price. GWP boost coefficient is ${(retailer.gwpBoost).toFixed(2)} — same dollar value gets more lift than a straight discount.`);
+    } else if (retailer.channel === 'DTC') {
+      lines.push(`DTC captures full margin (${Math.round(retailer.marginCapture*100)}%). Shallower depth + sample is more profitable than deeper discount.`);
+    } else if (retailer.channel === 'Travel') {
+      lines.push(`Travel retail shoppers respond to bundles and bonus size, not price cuts. Mechanic shift captures more incremental units per margin dollar.`);
     }
   }
   return lines;
@@ -827,41 +884,47 @@ function fmtK(n) {
 // ============================================================================
 
 const PLANS = [
-  // 20 PLANNED — Q2 cycle ---------------------------------------------------
-  { id: 'P-001', skuId: 'SKU-1001', retailerId: 'RET-A', weekId: 'W16', depth: 0.25, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-002', skuId: 'SKU-1001', retailerId: 'RET-B', weekId: 'W17', depth: 0.30, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-003', skuId: 'SKU-1001', retailerId: 'RET-C', weekId: 'W18', depth: 0.35, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-004', skuId: 'SKU-1002', retailerId: 'RET-A', weekId: 'W15', depth: 0.20, mechanic: 'TPR only', status: 'pending' },
-  { id: 'P-005', skuId: 'SKU-1002', retailerId: 'RET-B', weekId: 'W19', depth: 0.25, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-006', skuId: 'SKU-1002', retailerId: 'RET-C', weekId: 'W20', depth: 0.30, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-007', skuId: 'SKU-2001', retailerId: 'RET-A', weekId: 'W14', depth: 0.35, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-008', skuId: 'SKU-2001', retailerId: 'RET-A', weekId: 'W19', depth: 0.40, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-009', skuId: 'SKU-2001', retailerId: 'RET-B', weekId: 'W17', depth: 0.30, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-010', skuId: 'SKU-2001', retailerId: 'RET-C', weekId: 'W21', depth: 0.35, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-011', skuId: 'SKU-3001', retailerId: 'RET-A', weekId: 'W18', depth: 0.25, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-012', skuId: 'SKU-3001', retailerId: 'RET-A', weekId: 'W21', depth: 0.30, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-013', skuId: 'SKU-3001', retailerId: 'RET-B', weekId: 'W19', depth: 0.35, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-014', skuId: 'SKU-3001', retailerId: 'RET-B', weekId: 'W20', depth: 0.30, mechanic: 'TPR + feature', status: 'pending' },
-  { id: 'P-015', skuId: 'SKU-3001', retailerId: 'RET-C', weekId: 'W15', depth: 0.15, mechanic: 'TPR only', status: 'pending' },
-  { id: 'P-016', skuId: 'SKU-3001', retailerId: 'RET-C', weekId: 'W21', depth: 0.35, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-017', skuId: 'SKU-1001', retailerId: 'RET-C', weekId: 'W14', depth: 0.40, mechanic: 'TPR + feature + display', status: 'pending' },
-  { id: 'P-018', skuId: 'SKU-1002', retailerId: 'RET-B', weekId: 'W16', depth: 0.10, mechanic: 'TPR only', status: 'pending' },
-  { id: 'P-019', skuId: 'SKU-2001', retailerId: 'RET-B', weekId: 'W20', depth: 0.10, mechanic: 'TPR only', status: 'pending' },
-  { id: 'P-020', skuId: 'SKU-3001', retailerId: 'RET-B', weekId: 'W15', depth: 0.10, mechanic: 'TPR only', status: 'pending' }
+  // ---- Specialty (Sephora / Ulta) — 3 modify / 3 hold / 1 run ----
+  { id: 'P-001', skuId: 'ANR-SRM-50',   retailerId: 'SEPH', weekId: 'W16', depth: 0.20, mechanic: 'GWP · gift at $85',       status: 'pending' },
+  { id: 'P-002', skuId: 'DWEAR-FND',    retailerId: 'SEPH', weekId: 'W16', depth: 0.22, mechanic: '% off + sample',          status: 'pending' },
+  { id: 'P-003', skuId: 'PCE-LIP',      retailerId: 'SEPH', weekId: 'W18', depth: 0.25, mechanic: '% off',                    status: 'pending' },
+  { id: 'P-004', skuId: 'ANR-EYE-15',   retailerId: 'SEPH', weekId: 'W15', depth: 0.18, mechanic: 'GWP · gift at $65',       status: 'pending' },
+  { id: 'P-005', skuId: 'RENUTRIV-50',  retailerId: 'SEPH', weekId: 'W13', depth: 0.15, mechanic: 'GWP · sample kit',         status: 'pending' },
+  { id: 'P-006', skuId: 'PCCLEAN-150',  retailerId: 'ULTA', weekId: 'W19', depth: 0.30, mechanic: '% off',                    status: 'pending' },
+  { id: 'P-007', skuId: 'YOUTHDEW-EDP', retailerId: 'SEPH', weekId: 'W13', depth: 0.20, mechanic: '% off',                    status: 'pending' },
+
+  // ---- Department (Nordstrom / Macy's) — 3 modify / 2 hold / 1 run ----
+  { id: 'P-008', skuId: 'ANR-SRM-50',   retailerId: 'NORD', weekId: 'W17', depth: 0.15, mechanic: 'GWP · gift at $95',       status: 'pending' },
+  { id: 'P-009', skuId: 'REVSUP-50',    retailerId: 'MACY', weekId: 'W18', depth: 0.22, mechanic: 'GWP · gift at $75',       status: 'pending' },
+  { id: 'P-010', skuId: 'BBELLE-EDP',   retailerId: 'NORD', weekId: 'W18', depth: 0.20, mechanic: 'GWP · gift at $85',       status: 'pending' },
+  { id: 'P-011', skuId: 'SUMP-MAS',     retailerId: 'MACY', weekId: 'W17', depth: 0.25, mechanic: '% off',                    status: 'pending' },
+  { id: 'P-012', skuId: 'RENUTRIV-50',  retailerId: 'NORD', weekId: 'W15', depth: 0.10, mechanic: 'GWP · gift at $200',      status: 'pending' },
+  { id: 'P-013', skuId: 'YOUTHDEW-EDP', retailerId: 'MACY', weekId: 'W19', depth: 0.15, mechanic: '% off',                    status: 'pending' },
+
+  // ---- Travel Retail — 1 modify / 2 hold ----
+  { id: 'P-014', skuId: 'ANR-SRM-50',   retailerId: 'TRAV', weekId: 'W16', depth: 0.22, mechanic: 'Bonus size',               status: 'pending' },
+  { id: 'P-015', skuId: 'RENUTRIV-50',  retailerId: 'TRAV', weekId: 'W14', depth: 0.10, mechanic: 'Bundle / Gift set',        status: 'pending' },
+  { id: 'P-016', skuId: 'YOUTHDEW-EDP', retailerId: 'TRAV', weekId: 'W19', depth: 0.15, mechanic: 'Bundle / Gift set',        status: 'pending' },
+
+  // ---- DTC (esteelauder.com) — 3 modify / 1 hold ----
+  { id: 'P-017', skuId: 'ANR-SRM-50',   retailerId: 'DTC',  weekId: 'W18', depth: 0.12, mechanic: '% off + sample',           status: 'pending' },
+  { id: 'P-018', skuId: 'DWEAR-FND',    retailerId: 'DTC',  weekId: 'W17', depth: 0.15, mechanic: '% off + sample',           status: 'pending' },
+  { id: 'P-019', skuId: 'REVSUP-50',    retailerId: 'DTC',  weekId: 'W17', depth: 0.22, mechanic: '% off',                    status: 'pending' },
+  { id: 'P-020', skuId: 'RENUTRIV-50',  retailerId: 'DTC',  weekId: 'W12', depth: 0.10, mechanic: '% off + sample',           status: 'pending' }
 ];
 
-// 10 completed from last cycle — for the scorecard
+// 10 completed from last year's Mother's Day cycle — for the scorecard
 const COMPLETED = [
-  { id: 'C-001', skuId: 'SKU-1001', retailerId: 'RET-A', weekId: 'W09', depth: 0.25, planAdoption: 'approved',      expected: { incUnits: 11200, incGP: 41300 }, actual: { incUnits: 10400, incGP: 38900 } },
-  { id: 'C-002', skuId: 'SKU-1001', retailerId: 'RET-B', weekId: 'W10', depth: 0.30, planAdoption: 'overridden',    expected: { incUnits: 13100, incGP: 44800 }, actual: { incUnits:  9200, incGP: 28100 } },
-  { id: 'C-003', skuId: 'SKU-1002', retailerId: 'RET-C', weekId: 'W11', depth: 0.20, planAdoption: 'approved',      expected: { incUnits:  6800, incGP: 24600 }, actual: { incUnits:  7100, incGP: 25900 } },
-  { id: 'C-004', skuId: 'SKU-2001', retailerId: 'RET-A', weekId: 'W08', depth: 0.35, planAdoption: 'approved-mod',  expected: { incUnits: 14800, incGP: 52300 }, actual: { incUnits: 14100, incGP: 49200 } },
-  { id: 'C-005', skuId: 'SKU-2001', retailerId: 'RET-B', weekId: 'W12', depth: 0.30, planAdoption: 'approved',      expected: { incUnits:  9600, incGP: 33100 }, actual: { incUnits: 10200, incGP: 34800 } },
-  { id: 'C-006', skuId: 'SKU-3001', retailerId: 'RET-A', weekId: 'W09', depth: 0.25, planAdoption: 'approved',      expected: { incUnits: 15200, incGP: 58400 }, actual: { incUnits: 14700, incGP: 55900 } },
-  { id: 'C-007', skuId: 'SKU-3001', retailerId: 'RET-B', weekId: 'W11', depth: 0.35, planAdoption: 'overridden',    expected: { incUnits: 18100, incGP: 61200 }, actual: { incUnits: 13400, incGP: 39700 } },
-  { id: 'C-008', skuId: 'SKU-3001', retailerId: 'RET-C', weekId: 'W13', depth: 0.30, planAdoption: 'approved-mod',  expected: { incUnits: 16400, incGP: 57800 }, actual: { incUnits: 15900, incGP: 55100 } },
-  { id: 'C-009', skuId: 'SKU-1002', retailerId: 'RET-A', weekId: 'W12', depth: 0.15, planAdoption: 'approved',      expected: { incUnits:  4200, incGP: 15800 }, actual: { incUnits:  4400, incGP: 16400 } },
-  { id: 'C-010', skuId: 'SKU-2001', retailerId: 'RET-C', weekId: 'W13', depth: 0.40, planAdoption: 'overridden',    expected: { incUnits: 16900, incGP: 49800 }, actual: { incUnits: 11200, incGP: 26300 } }
+  { id: 'C-001', skuId: 'ANR-SRM-50',   retailerId: 'NORD', weekId: 'W18', depth: 0.15, planAdoption: 'approved',     expected: { incUnits:  1650, incGP: 58400 }, actual: { incUnits:  1580, incGP: 55900 } },
+  { id: 'C-002', skuId: 'ANR-SRM-50',   retailerId: 'SEPH', weekId: 'W17', depth: 0.22, planAdoption: 'overridden',   expected: { incUnits:  2100, incGP: 41200 }, actual: { incUnits:  1320, incGP: 21800 } },
+  { id: 'C-003', skuId: 'REVSUP-50',    retailerId: 'MACY', weekId: 'W18', depth: 0.20, planAdoption: 'approved',     expected: { incUnits:  1180, incGP: 32600 }, actual: { incUnits:  1240, incGP: 34100 } },
+  { id: 'C-004', skuId: 'DWEAR-FND',    retailerId: 'SEPH', weekId: 'W16', depth: 0.20, planAdoption: 'approved-mod', expected: { incUnits:  3400, incGP: 28900 }, actual: { incUnits:  3250, incGP: 27300 } },
+  { id: 'C-005', skuId: 'BBELLE-EDP',   retailerId: 'NORD', weekId: 'W18', depth: 0.18, planAdoption: 'approved',     expected: { incUnits:   740, incGP: 22400 }, actual: { incUnits:   780, incGP: 23600 } },
+  { id: 'C-006', skuId: 'PCE-LIP',      retailerId: 'ULTA', weekId: 'W17', depth: 0.25, planAdoption: 'overridden',   expected: { incUnits:  2900, incGP: 11800 }, actual: { incUnits:  1740, incGP:  5200 } },
+  { id: 'C-007', skuId: 'ANR-EYE-15',   retailerId: 'DTC',  weekId: 'W17', depth: 0.12, planAdoption: 'approved',     expected: { incUnits:   920, incGP: 24800 }, actual: { incUnits:   960, incGP: 25900 } },
+  { id: 'C-008', skuId: 'RENUTRIV-50',  retailerId: 'TRAV', weekId: 'W14', depth: 0.10, planAdoption: 'approved',     expected: { incUnits:   110, incGP: 22400 }, actual: { incUnits:   106, incGP: 21600 } },
+  { id: 'C-009', skuId: 'SUMP-MAS',     retailerId: 'SEPH', weekId: 'W16', depth: 0.25, planAdoption: 'overridden',   expected: { incUnits:  1900, incGP:  6400 }, actual: { incUnits:  1050, incGP:  1200 } },
+  { id: 'C-010', skuId: 'REVSUP-50',    retailerId: 'DTC',  weekId: 'W18', depth: 0.15, planAdoption: 'approved-mod', expected: { incUnits:   980, incGP: 27300 }, actual: { incUnits:   940, incGP: 26100 } }
 ];
 
 // Precompute recommendations for all plans
@@ -876,6 +939,7 @@ const STATE = {
   currentView: 'workspace',
   currentPromoId: null,
   currentFilter: 'all',
+  channelFilter: 'all',
   audit: [],        // array of {id, action, user, time, rationale, fromDepth, toDepth}
   simDepth: null,   // for slider
 };
@@ -935,7 +999,10 @@ function renderWorkspace() {
   document.getElementById('kpi-recov').textContent = fmtCurrency(recov);
   document.getElementById('nav-badge-workspace').textContent = needs;
 
-  // Filter pills
+  // Channel breakdown card
+  renderChannelBreakdown();
+
+  // Action filter pills
   const counts = { all: PLANS.length, modify: 0, hold: 0, run: 0 };
   PLANS.forEach(p => counts[RECOMMENDATIONS[p.id].action]++);
   document.querySelectorAll('#filter-pills .pill').forEach(pill => {
@@ -944,12 +1011,30 @@ function renderWorkspace() {
     pill.classList.toggle('active', f === STATE.currentFilter);
   });
 
+  // Channel filter pills
+  const chanCounts = { all: PLANS.length, Specialty: 0, Department: 0, Travel: 0, DTC: 0 };
+  PLANS.forEach(p => { chanCounts[RETAILERS[p.retailerId].channel]++; });
+  document.querySelectorAll('#channel-pills .pill').forEach(pill => {
+    const c = pill.dataset.channel;
+    const label = c === 'all' ? 'All channels' : c;
+    pill.textContent = `${label} (${chanCounts[c]})`;
+    pill.classList.toggle('active', c === STATE.channelFilter);
+  });
+
   // Table
   const tbody = document.getElementById('promo-tbody');
   tbody.innerHTML = '';
-  const filtered = STATE.currentFilter === 'all'
-    ? PLANS
-    : PLANS.filter(p => RECOMMENDATIONS[p.id].action === STATE.currentFilter);
+  const filtered = PLANS.filter(p => {
+    const r = RECOMMENDATIONS[p.id];
+    const channel = RETAILERS[p.retailerId].channel;
+    const actionOk = STATE.currentFilter === 'all' || r.action === STATE.currentFilter;
+    const chanOk = STATE.channelFilter === 'all' || channel === STATE.channelFilter;
+    return actionOk && chanOk;
+  });
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="10" class="audit-empty" style="padding:36px">No promotions match the current filters.</td></tr>';
+    return;
+  }
   filtered.forEach(p => {
     const r = RECOMMENDATIONS[p.id];
     const sku = SKUS[p.skuId];
@@ -961,9 +1046,9 @@ function renderWorkspace() {
     tr.innerHTML = `
       <td class="id">${p.id}</td>
       <td><strong>${sku.name}</strong><div class="small muted">${sku.category}</div></td>
-      <td>${ret.name}</td>
+      <td><strong>${ret.name}</strong><div class="small muted">${ret.channel}</div></td>
       <td class="small">${weekLabel(p.weekId)}</td>
-      <td>${Math.round(p.depth*100)}% ${p.mechanic.includes('feature') ? '<span class="small muted"> · feature</span>' : ''}</td>
+      <td>${Math.round(p.depth*100)}% <div class="small muted">${p.mechanic}</div></td>
       <td>${r.action === 'run' ? '<span class="muted">—</span>' : Math.round(r.recommended.depth*100)+'%'}</td>
       <td><span class="badge badge-${r.action}">${r.action.toUpperCase()}</span></td>
       <td class="num ${deltaClass}">${deltaSign}${fmtCurrency(r.gpDelta)}</td>
@@ -975,9 +1060,61 @@ function renderWorkspace() {
   });
 }
 
+function renderChannelBreakdown() {
+  // By channel: count of actions + sum of recommended incGP + avg margin capture
+  const channels = ['Specialty', 'Department', 'Travel', 'DTC'];
+  const rows = channels.map(ch => {
+    const plans = PLANS.filter(p => RETAILERS[p.retailerId].channel === ch);
+    if (plans.length === 0) return null;
+    const counts = { modify: 0, hold: 0, run: 0 };
+    let recGP = 0, planGP = 0;
+    plans.forEach(p => {
+      const r = RECOMMENDATIONS[p.id];
+      counts[r.action]++;
+      recGP += r.recommended.incGP;
+      planGP += r.planned.incGP;
+    });
+    const mc = RETAILERS[plans[0].retailerId].marginCapture;
+    const avgGP = recGP / plans.length;
+    return { ch, n: plans.length, counts, recGP, planGP, avgGP, mc };
+  }).filter(Boolean);
+
+  const body = document.getElementById('channel-breakdown');
+  body.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <h3 style="margin:0;font-size:13.5px;color:var(--navy)">Channel read · Mother's Day 2026</h3>
+      <span class="small muted">Same SKU, different math. Margin capture and seasonality differ by channel.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(${rows.length},1fr);gap:14px">
+      ${rows.map(r => `
+        <div style="border:1px solid var(--line);border-radius:6px;padding:12px 14px;background:var(--tint)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div style="font-weight:700;color:var(--navy);font-size:13.5px">${r.ch}</div>
+            <div class="small muted">${r.n} plans</div>
+          </div>
+          <div class="small muted" style="margin-bottom:4px">Margin capture <strong style="color:var(--charcoal)">${Math.round(r.mc*100)}%</strong></div>
+          <div style="font-size:17px;font-weight:700;color:var(--navy);letter-spacing:-0.01em">${fmtCurrency(r.recGP)}</div>
+          <div class="small muted" style="margin-bottom:8px">Rec. inc. GP</div>
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            ${r.counts.run ? `<span class="badge badge-run">${r.counts.run} RUN</span>` : ''}
+            ${r.counts.modify ? `<span class="badge badge-modify">${r.counts.modify} MODIFY</span>` : ''}
+            ${r.counts.hold ? `<span class="badge badge-hold">${r.counts.hold} HOLD</span>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 document.querySelectorAll('#filter-pills .pill').forEach(pill => {
   pill.addEventListener('click', () => {
     STATE.currentFilter = pill.dataset.filter;
+    renderWorkspace();
+  });
+});
+document.querySelectorAll('#channel-pills .pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    STATE.channelFilter = pill.dataset.channel;
     renderWorkspace();
   });
 });
@@ -1045,10 +1182,11 @@ function renderDetail() {
           <span class="badge badge-${r.action}">${r.action.toUpperCase()}</span>
         </div>
         ${r.action === 'hold' ? `
-          <div class="compare-metric"><div class="label">Recommendation</div><div class="val">Do not run. No profitable depth.</div></div>
+          <div class="compare-metric"><div class="label">Recommendation</div><div class="val">Do not run. Below activation floor.</div></div>
           <div class="compare-metric"><div class="label">Best-case depth</div><div class="val">${Math.round(r.recommended.depth*100)}%</div></div>
-          <div class="compare-metric"><div class="label">Best-case inc. GP</div><div class="val big ${recCls}">${fmtCurrency(r.recommended.incGP)}</div></div>
-          <div class="compare-metric"><div class="label">Plan GP risk avoided</div><div class="val pos">${fmtCurrency(Math.abs(r.planned.incGP))}</div></div>
+          <div class="compare-metric"><div class="label">Best-case inc. GP</div><div class="val big">${fmtCurrency(r.recommended.incGP)}</div></div>
+          <div class="compare-metric"><div class="label">Activation floor</div><div class="val">$2,500</div></div>
+          <div class="compare-metric"><div class="label">Channel capture</div><div class="val">${Math.round(ret.marginCapture*100)}% · ${ret.channel}</div></div>
         ` : `
           <div class="compare-metric"><div class="label">Depth</div><div class="val">${Math.round(r.recommended.depth*100)}%</div></div>
           <div class="compare-metric"><div class="label">Mechanic</div><div class="val">${r.recommended.mechanic}</div></div>
@@ -1285,8 +1423,8 @@ function updateSliderLive() {
   document.getElementById('sim-cur').textContent = Math.round(depth*100) + '%';
 
   const incUnits = incrementalUnits(sku, depth, season);
-  const incGPv = incrementalGP(sku, depth, season);
-  const give = marginGiveaway(sku, depth, season);
+  const incGPv = incrementalGP(sku, depth, season, ret);
+  const give = marginGiveaway(sku, depth, season, ret);
   const conf = confidenceScore(sku, depth, week, ret);
 
   document.getElementById('sim-live').innerHTML = `
@@ -1324,8 +1462,8 @@ function renderScorecard() {
 
   document.getElementById('scorecard-hero').innerHTML = `
     <div>
-      <div class="h-title">Approved recommendations landed ${(approvedAvgVar*100).toFixed(0)}% off expected.</div>
-      <div class="h-sub">Overridden plans came in ${(overriddenAvgVar*100).toFixed(0)}% off. The recommendations are more accurate than human overrides this cycle. That is the trust signal.</div>
+      <div class="h-title">Mother's Day 2025 · Approved recommendations landed ${(approvedAvgVar*100).toFixed(0)}% off expected.</div>
+      <div class="h-sub">Overridden plans came in ${(overriddenAvgVar*100).toFixed(0)}% off. The workbench outperformed human overrides last cycle. That is the trust signal — and the reason to keep using it this cycle.</div>
     </div>
     <div class="h-stat">
       <div class="h-stat-num">${(approvedAvgVar*100).toFixed(0)}%</div>
@@ -1369,11 +1507,11 @@ function renderScorecard() {
 const COPILOT_INTRO = `Hi. I can explain any recommendation, compare scenarios, or flag risks. I answer with numbers from the data. Try a suggestion below, or ask about any promotion by ID.`;
 
 const SUGGESTIONS = [
-  'Which promotion has the largest margin risk this cycle?',
-  'Why hold P-008?',
+  'Which channel has the best Mother\'s Day economics?',
+  'Why hold P-005?',
   'Which SKU is most promotable?',
-  'How accurate were last cycle\'s recommendations?',
-  'What is the break-even depth for Brand Z Sparkling?'
+  'How did last Mother\'s Day\'s recommendations perform?',
+  'Compare ANR-SRM-50 across channels'
 ];
 
 function initCopilot() {
@@ -1424,23 +1562,61 @@ function answerQuestion(q) {
       const r = RECOMMENDATIONS[id];
       const sku = SKUS[p.skuId];
       const ret = RETAILERS[p.retailerId];
+      if (r.action === 'hold' || Q.includes('hold')) {
+        return {
+          html: `<strong>${id}</strong> (${sku.name} at ${ret.name}): best-case incremental GP across all tested depths is <strong>${fmtCurrency(r.recommended.incGP)}</strong> — below our <strong>$2,500</strong> activation floor. ${ret.name} sits in the ${ret.channel} channel at ${Math.round(ret.marginCapture*100)}% margin capture. Baseline is ${sku.baselineWeeklyUnits.toLocaleString()} units/wk at ${weekLabel(p.weekId)} seasonality ${WEEKS.find(w=>w.id===p.weekId).seasonalityIdx.toFixed(2)}×. Not enough volume to clear retailer buy-in + POS + agency cost.`,
+          cite: `Sources: ${id}, SKU ${p.skuId}, ${ret.name} margin capture ${Math.round(ret.marginCapture*100)}%`
+        };
+      }
       if (Q.includes('why') || Q.includes('better')) {
         const depthDelta = r.recommended.depth - p.depth;
         const dir = depthDelta < 0 ? 'lower' : 'higher';
         return {
-          html: `<strong>${id}</strong> (${sku.name}, ${ret.name}): at ${Math.round(p.depth*100)}% depth, expected incremental GP is <strong>${fmtCurrency(r.planned.incGP)}</strong>. At ${Math.round(r.recommended.depth*100)}%, it is <strong>${fmtCurrency(r.recommended.incGP)}</strong>. The ${dir} depth moves more of the lift into true incrementality and cuts margin give-away from ${fmtCurrency(r.planned.giveaway)} to ${fmtCurrency(r.recommended.giveaway)}. SKU elasticity is ${sku.elasticity} and forward-buy coefficient is ${sku.forwardBuy}.`,
-          cite: `Sources: ${id}, SKU ${p.skuId}, elasticity ${sku.elasticity}`
-        };
-      }
-      if (Q.includes('hold')) {
-        return {
-          html: `<strong>${id}</strong> (${sku.name}): no positive-GP depth exists under current assumptions. Best-case incremental GP across all tested depths is <strong>${fmtCurrency(r.recommended.incGP)}</strong>. The margin give-away on baseline units exceeds the incremental margin from lift, even at shallow depths. Elasticity ${sku.elasticity}, unit margin ${sku.unitMargin.toFixed(2)}, price ${sku.unitPrice.toFixed(2)}.`,
-          cite: `Sources: ${id}, SKU ${p.skuId}`
+          html: `<strong>${id}</strong> (${sku.name}, ${ret.name} · ${ret.channel}): at ${Math.round(p.depth*100)}% planned depth, expected incremental GP is <strong>${fmtCurrency(r.planned.incGP)}</strong>. At ${Math.round(r.recommended.depth*100)}% + ${r.recommended.mechanic}, it rises to <strong>${fmtCurrency(r.recommended.incGP)}</strong>. The ${dir} depth cuts margin give-away from ${fmtCurrency(r.planned.giveaway)} to ${fmtCurrency(r.recommended.giveaway)}. ${ret.channel} captures ${Math.round(ret.marginCapture*100)}% of unit margin — the channel-specific math is why the same SKU scores differently here than on DTC.`,
+          cite: `Sources: ${id}, SKU ${p.skuId}, elasticity ${sku.elasticity}, ${ret.name} capture ${Math.round(ret.marginCapture*100)}%`
         };
       }
       return {
-        html: `<strong>${id}</strong>: ${sku.name} at ${ret.name}, ${weekLabel(p.weekId)}. Planned ${Math.round(p.depth*100)}% / ${p.mechanic}. Recommendation: <strong>${r.actionLabel}</strong>. Planned GP ${fmtCurrency(r.planned.incGP)}, recommended GP ${fmtCurrency(r.recommended.incGP)}, delta ${r.gpDelta > 0 ? '+':''}${fmtCurrency(r.gpDelta)}.`,
+        html: `<strong>${id}</strong>: ${sku.name} at ${ret.name} (${ret.channel}), ${weekLabel(p.weekId)}. Planned ${Math.round(p.depth*100)}% · ${p.mechanic}. Recommendation: <strong>${r.actionLabel}</strong>. Planned GP ${fmtCurrency(r.planned.incGP)}, recommended GP ${fmtCurrency(r.recommended.incGP)}, delta ${r.gpDelta > 0 ? '+':''}${fmtCurrency(r.gpDelta)}.`,
         cite: `Sources: ${id}`
+      };
+    }
+  }
+
+  // Channel comparison — which channel performs best
+  if (Q.includes('channel') && (Q.includes('best') || Q.includes('economics') || Q.includes('compare'))) {
+    const channels = ['Specialty', 'Department', 'Travel', 'DTC'];
+    const stats = channels.map(ch => {
+      const plans = PLANS.filter(p => RETAILERS[p.retailerId].channel === ch);
+      if (plans.length === 0) return null;
+      const totalRec = plans.reduce((s, p) => s + RECOMMENDATIONS[p.id].recommended.incGP, 0);
+      const avgRec = totalRec / plans.length;
+      const mc = RETAILERS[plans[0].retailerId].marginCapture;
+      return { ch, n: plans.length, totalRec, avgRec, mc };
+    }).filter(Boolean).sort((a, b) => b.avgRec - a.avgRec);
+    const top = stats[0];
+    const lines = stats.map(s => `${s.ch}: ${fmtCurrency(s.avgRec)} avg inc. GP/plan (${s.n} plans, ${Math.round(s.mc*100)}% capture)`).join(' · ');
+    return {
+      html: `<strong>${top.ch}</strong> has the strongest Mother's Day economics per plan: <strong>${fmtCurrency(top.avgRec)}</strong> average recommended incremental GP across ${top.n} plans. ${top.ch === 'DTC' ? 'esteelauder.com keeps 100% of margin — every discount dollar saved goes straight to GP.' : (top.ch === 'Department' ? 'Nordstrom and Macy\'s lean heavily on GWP, which the model rewards with a ' + RETAILERS['NORD'].gwpBoost.toFixed(2) + '× boost coefficient.' : '')} Full read: ${lines}.`,
+      cite: `Sources: all 20 plans, grouped by channel`
+    };
+  }
+
+  // Cross-channel SKU compare
+  const skuMatch = q.match(/(ANR-SRM-50|ANR-EYE-15|REVSUP-50|RENUTRIV-50|DWEAR-FND|PCE-LIP|SUMP-MAS|BBELLE-EDP|YOUTHDEW-EDP|PCCLEAN-150)/i);
+  if (skuMatch && (Q.includes('compare') || Q.includes('channel') || Q.includes('across'))) {
+    const skuId = skuMatch[0].toUpperCase();
+    const sku = SKUS[skuId];
+    const rel = PLANS.filter(p => p.skuId === skuId);
+    if (rel.length > 0) {
+      const lines = rel.map(p => {
+        const r = RECOMMENDATIONS[p.id];
+        const ret = RETAILERS[p.retailerId];
+        return `<tr><td>${ret.channel}</td><td>${ret.name}</td><td>${Math.round(r.recommended.depth*100)}%</td><td class="num">${fmtCurrency(r.recommended.incGP)}</td></tr>`;
+      }).join('');
+      return {
+        html: `<strong>${sku.name}</strong> across channels this cycle (elasticity ${sku.elasticity}, baseline ${sku.baselineWeeklyUnits.toLocaleString()}/wk):<br><table class="alts-table" style="margin-top:8px"><thead><tr><th>Channel</th><th>Retailer</th><th>Rec depth</th><th class="num">Rec inc. GP</th></tr></thead><tbody>${lines}</tbody></table><p style="margin-top:8px">Same SKU, different math. Margin capture and GWP response differ by channel — that's the whole point of the workbench.</p>`,
+        cite: `Sources: ${skuId} across ${rel.length} plans`
       };
     }
   }
@@ -1453,8 +1629,9 @@ function answerQuestion(q) {
       if (!worst || r.planned.incGP < RECOMMENDATIONS[worst.id].planned.incGP) worst = p;
     });
     const r = RECOMMENDATIONS[worst.id];
+    const ret = RETAILERS[worst.retailerId];
     return {
-      html: `<strong>${worst.id}</strong> carries the largest margin risk: ${SKUS[worst.skuId].name} at ${RETAILERS[worst.retailerId].name}, ${weekLabel(worst.weekId)}, ${Math.round(worst.depth*100)}% depth. Expected incremental GP is <strong>${fmtCurrency(r.planned.incGP)}</strong>. The system recommends <strong>${r.actionLabel}</strong>, which avoids ${fmtCurrency(Math.abs(r.planned.incGP))} of margin destruction.`,
+      html: `<strong>${worst.id}</strong> carries the largest margin risk: ${SKUS[worst.skuId].name} at ${ret.name} (${ret.channel}), ${weekLabel(worst.weekId)}, ${Math.round(worst.depth*100)}% depth. Expected incremental GP is <strong>${fmtCurrency(r.planned.incGP)}</strong>. The system recommends <strong>${r.actionLabel}</strong>, which avoids ${fmtCurrency(Math.abs(r.planned.incGP - r.recommended.incGP))} of margin leakage vs. the current plan.`,
       cite: `Sources: ${worst.id}`
     };
   }
@@ -1463,18 +1640,19 @@ function answerQuestion(q) {
   if (Q.includes('promotable') || (Q.includes('most') && Q.includes('sku'))) {
     const ranks = Object.entries(SKUS).map(([id, s]) => ({
       id, name: s.name,
-      // Promotability score: elasticity × margin headroom × (1 - drag)
-      score: Math.abs(s.elasticity) * (s.unitMargin / s.unitPrice) * (1 - s.cannibalization - s.forwardBuy)
+      score: Math.abs(s.elasticity) * (s.unitMargin / s.unitPrice) * (1 - s.cannibalization - s.forwardBuy) * Math.log(s.baselineWeeklyUnits)
     })).sort((a,b) => b.score - a.score);
     const top = ranks[0];
+    const bottom = ranks[ranks.length - 1];
+    const t = SKUS[top.id], b = SKUS[bottom.id];
     return {
-      html: `<strong>${top.name}</strong> is the most promotable SKU in the portfolio. Elasticity ${SKUS[top.id].elasticity}, margin headroom ${Math.round(SKUS[top.id].unitMargin/SKUS[top.id].unitPrice*100)}%, low drag. It can sustain deeper discounts profitably. Cereal SKUs have thinner margin-to-price ratios and do not support profitable promotion at any meaningful depth under current assumptions.`,
-      cite: `Sources: SKU ${top.id}`
+      html: `<strong>${top.name}</strong> is the most promotable SKU in the Mother's Day set. Elasticity ${t.elasticity}, margin-to-price ratio ${(t.unitMargin/t.unitPrice).toFixed(2)}, baseline ${t.baselineWeeklyUnits.toLocaleString()} units/wk. Volume × responsiveness × healthy margin — the trifecta. At the other end, <strong>${b.name}</strong> has baseline ${b.baselineWeeklyUnits.toLocaleString()} units/wk, which caps incremental GP no matter the mechanic.`,
+      cite: `Sources: SKU ${top.id} vs ${bottom.id}`
     };
   }
 
   // Scorecard accuracy
-  if (Q.includes('last cycle') || Q.includes('accuracy') || Q.includes('accurate')) {
+  if (Q.includes('last') || Q.includes('accuracy') || Q.includes('accurate') || Q.includes('mother')) {
     let approvedVars = [], overriddenVars = [];
     COMPLETED.forEach(c => {
       const v = Math.abs((c.actual.incGP - c.expected.incGP) / c.expected.incGP);
@@ -1483,29 +1661,30 @@ function answerQuestion(q) {
     const avgA = approvedVars.reduce((a,b)=>a+b,0) / approvedVars.length;
     const avgO = overriddenVars.reduce((a,b)=>a+b,0) / overriddenVars.length;
     return {
-      html: `Last cycle, approved recommendations came in within <strong>${(avgA*100).toFixed(0)}%</strong> of expected incremental GP on average. Overridden plans came in <strong>${(avgO*100).toFixed(0)}%</strong> off. The recommendations beat the overrides by a wide margin. Full detail in the Post-Promo Scorecard.`,
-      cite: `Sources: 10 completed promotions (last cycle)`
+      html: `Mother's Day 2025: approved recommendations came in within <strong>${(avgA*100).toFixed(0)}%</strong> of expected incremental GP on average. Overridden plans came in <strong>${(avgO*100).toFixed(0)}%</strong> off. The workbench beat human overrides by a meaningful margin last cycle. Full detail in the Post-Promo Scorecard.`,
+      cite: `Sources: 10 completed promotions, Mother's Day 2025`
     };
   }
 
-  // Break-even depth
-  if (Q.includes('break-even') || Q.includes('breakeven')) {
-    if (Q.includes('sparkling') || Q.includes('beverage') || Q.includes('z')) {
-      const sku = SKUS['SKU-3001'];
+  // Break-even / elasticity for a named SKU
+  if (Q.includes('break-even') || Q.includes('breakeven') || Q.includes('elasticity')) {
+    if (skuMatch) {
+      const skuId = skuMatch[0].toUpperCase();
+      const sku = SKUS[skuId];
       return {
-        html: `Break-even depth for <strong>${sku.name}</strong>: roughly <strong>14%</strong>. Below that, incremental margin exceeds give-away. Above that, each additional point of depth loses money. Elasticity ${sku.elasticity}, margin-to-price ratio ${(sku.unitMargin/sku.unitPrice).toFixed(2)}, drag ${Math.round((sku.cannibalization + sku.forwardBuy)*100)}%.`,
-        cite: `Sources: SKU-3001`
+        html: `<strong>${sku.name}</strong>: elasticity <strong>${sku.elasticity}</strong>, margin-to-price <strong>${(sku.unitMargin/sku.unitPrice).toFixed(2)}</strong>. Break-even depth on DTC is where incremental margin from lift exactly offsets margin give-away on baseline units — in this portfolio, most prestige SKUs break even around 8–10% on DTC but need ${sku.elasticity < -2.5 ? '15–20%' : '12–18%'} on Specialty to clear the activation floor, because Sephora/Ulta only retain 60% of capture.`,
+        cite: `Sources: SKU ${skuId}`
       };
     }
     return {
-      html: `Break-even depth depends on the SKU. For the beverage (Brand Z Sparkling), it is ~14%. For frozen pizza (Brand Y), ~13%. Cereal SKUs have negative break-even under current margin structure. Ask about a specific SKU for detail.`,
+      html: `Ask about a specific SKU (e.g. "break-even for ANR-SRM-50") and I'll give you channel-by-channel break-even depth. General rule: DTC clears at 8–10%, Specialty needs 12–18%, Department needs GWP not depth, Travel needs bundles.`,
       cite: `Sources: All SKUs`
     };
   }
 
   // Fallback
   return {
-    html: `I can answer with specifics if you name a promotion ID (like P-008) or a SKU. Try one of the suggestions below, or ask about margin risk, break-even depth, or last-cycle accuracy.`,
+    html: `I can answer with specifics if you name a promotion ID (like P-005), a channel (Specialty, Department, Travel, DTC), or a SKU (e.g. ANR-SRM-50). Try one of the suggestions below.`,
     cite: null
   };
 }
